@@ -15,6 +15,8 @@ if __name__ == '__main__':
     sum_of_products = 0
 
     for match in matches:
-        sum_of_products += int(match.split(',')[0]) * int(match.split(',')[1])
+        a = int(match.split(',')[0])
+        b = int(match.split(',')[1])
+        sum_of_products += mul(a, b)
 
     print(f"Solution: {sum_of_products}")

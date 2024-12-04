@@ -6,7 +6,7 @@ with open('input.txt', 'r') as file:
 """
 Part 1
 
-    iterate through reports and check if necessary conditions are met
+    Condition 1 logic: iterate through reports and check if necessary conditions are met
     if we reach the end of a report and safe_report boolean is still True
     we increment our safe report counter
 """
@@ -29,7 +29,7 @@ for report in reports:
             break
 
         """
-            check if report is consistently increasing or decreasing
+            Condition 2 logic: check if report is consistently increasing or decreasing
             a report is deemed to be increasing or decreasing by comparing the first two levels. 
             if subsequent levels are found to change, then the safe_report boolean is set to False,
             which will cause a break to the next report
@@ -41,11 +41,21 @@ for report in reports:
                 report_is = "decreasing"
         elif int(level) < int(report[index + 1]) and report_is != "increasing":
             safe_report = False
+            can_report_become_safe(report)
             break
         elif int(level) > int(report[index + 1]) and report_is != "decreasing":
             safe_report = False
+            can_report_become_safe(report)
             break
 
 print(f"\n*** Total safe reports: {safe_report_counter} ***")
 
-""" Part 2 """
+
+""" 
+Part 2 
+    If a report is unsafe, can it be made safe by removing a level? 
+    Reports can only tolerate a single bad level and no more 
+"""
+def can_report_become_safe(report):
+    print(f"A bad report has been found: {report}")
+
